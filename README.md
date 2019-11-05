@@ -2,7 +2,7 @@
 
 하이퍼레져 앱 만들기 실습 46일차 - veu.js로 TO DO LIST 앱 만들기
 
-Vuejs module 불러오기
+A. Vuejs module 불러오기
 
 1. index.html 만들기
 
@@ -30,4 +30,35 @@ Vuejs module 불러오기
         See more tips at https://vuejs.org/guide/deployment.html'
 
 
+B. Vuejs를 활용하여 간단한 Login 구현
 
+        <!doctype html>
+        <html lang="ko">
+            <head>
+
+            </head>
+
+            <body>
+                <div id='app'>
+                    <input type="text" id="user_id" v-model="userId">
+                    <input type="password" id="user_password" v-model="userPassword">
+                    <button type="button">로그인</button>
+                    <br />
+                    아이디 : {{ userId }}
+                    <br />
+                    비밀번호 : {{ userPassword }}
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                <script>
+                    new Vue({
+                        el: '#app',
+                        data() {
+                            return {
+                                userId: '',
+                                userPassword: ''
+                            }
+                        }
+                    })
+                </script>
+            </body>
+        </html>
