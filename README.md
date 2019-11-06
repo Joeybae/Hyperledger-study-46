@@ -113,3 +113,65 @@ C. Vuejs For문 사용
                         </template>
                     </ul>
         </div>
+
+3. Vuejs 이미지 슬라이더
+
+        <!doctype html>
+        <html lang="ko">
+            <head>
+
+            </head>
+
+            <body>
+                <div id='app'>
+                    <image-slider>
+                        <p>
+                            <a @click="prev">Previous</a> || <a @click="next">Next</a>
+                        </p>
+                        <div
+                            v-for="number in [currentNumber]"
+                            transition="fade"
+                        > 
+                        <img
+                            :src="images[Math.abs(currentNumber) % images.length]"
+                            v-on:mouseover="stopRotation"
+                            v-on:mouseout="startRotation"
+                        />
+                        </div>
+                    </image-slider>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+                <script>
+                    new Vue({
+                        el: 'image-slider',
+                        data: {
+                        images: ['home.png', 'create.jpg', 'query.jpg', 'change.jpg'],
+                        currentNumber: 0,
+                        timer: null
+                        },
+
+                        ready: function () {
+                            this.startRotation();
+                        },
+
+                        methods: {
+                            startRotation: function() {
+                                this.timer = setInterval(this.next, 3000);
+                            },
+
+                            stopRotation: function() {
+                                clearTimeout(this.timer);
+                                this.timer = null;
+                            },
+
+                            next: function() {
+                                this.currentNumber += 1
+                            },
+                            prev: function() {
+                                this.currentNumber -= 1
+                            }
+                        }
+                    });
+                </script>
+            </body>
+        </html>
