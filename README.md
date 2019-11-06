@@ -62,3 +62,54 @@ B. Vuejs를 활용하여 간단한 Login 구현
                 </script>
             </body>
         </html>
+
+C. Vuejs For문 사용
+
+1. 사용할 데이터 생성
+
+        <script>
+                    new Vue({
+                        el: '#app',
+                        data() {
+                            return {
+                                items: [
+                                    {
+                                        id: 1,
+                                        image: 'home.png',
+                                        title: 'HOME'
+                                    },
+                                    {
+                                        id: 2,
+                                        image: 'query.jpg',
+                                        title: 'Query'
+                                    },
+                                    {
+                                        id: 3,
+                                        image: 'create.jpg',
+                                        title: 'Create'
+                                    },
+                                    {
+                                        id: 4,
+                                        image: 'change.jpg',
+                                        title: 'Change'
+                                    },
+                                ]
+                            }
+                        }
+                    })
+        </script>
+
+2. Vuejs에서 For문 호출
+
+        <div id='app'>
+                    <ul style="list-style: none;">
+                        <template v-for="item in items">
+                                <li>
+                                    <img :src="item.id">
+                                </li>
+                                <li>
+                                    {{item.title}}
+                                </li>
+                        </template>
+                    </ul>
+        </div>
